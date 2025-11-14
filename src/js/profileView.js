@@ -1,5 +1,12 @@
+/**
+ * Renderiza o perfil do usuário e seus repositórios na página.
+ * @param {object} userData - Os dados do perfil do usuário.
+ * @param {Array<object>} userRepos - A lista de repositórios do usuário.
+ * @param {HTMLElement} container - O elemento do DOM onde o perfil será renderizado.
+ */
 export function renderProfile(userData, userRepos, container) {
   
+  // Gera o HTML para a lista de repositórios.
   const repositoriesHTML = userRepos && userRepos.length > 0 ? userRepos.map(repo => `
     <a href="${repo.html_url}" target="_blank">
         <div class="repository-card">    
@@ -15,6 +22,7 @@ export function renderProfile(userData, userRepos, container) {
     
     `).join('') : `<p>Nenhum repositório encontrado.</p>`;
     
+    // Insere o HTML do perfil e dos repositórios no contêiner.
     container.innerHTML = `
     <div class="profile-card">
       <img src="${userData.avatar_url}" alt="Avatar de ${
